@@ -61,7 +61,10 @@ fn main()
             {
                 slovo = slovo.substring(1, slovo.len()).to_string();
             }
-        } //TODO: else
+        } else if slovo.len() > 1
+        {
+            slovo = slovo.substring(1, slovo.len()).to_string();
+        }
 
         slovo = slovo.to_lowercase();
 
