@@ -9,11 +9,14 @@ use std::
 };
 
 use substring::Substring;
+use is_vowel::IsRomanceVowel;
 
 fn main()
 {
     clear_terminal();
+
     let mut slovo: String = String::new();
+    let mut upper: bool = false;
     match stdin().read_line(&mut slovo)
     {
         Ok(_) => {},
@@ -26,9 +29,27 @@ fn main()
 
     clear_terminal();
 
-    slovo = slovo.substring(1, slovo.len() - 1).to_string();
+    //CUT NEW-LINE CHAR
+    slovo = slovo.substring(0, slovo.len() - 1).to_string();
+
+    //CHECK IF WORD STARTS WITH UPPER CASE CHAR
+    if (slovo.as_bytes()[0] as char).is_uppercase() { upper = true; }
+
+    //REMOVE ANY UNWANTED PREFIX
+    while !(slovo.as_bytes()[0] as char).is_romance_vowel()
+    {
+        slovo = slovo.substring(1, slovo.len()).to_string();
+    }
+
+    slovo = slovo.to_lowercase();
 
     slovo = "schw".to_owned() + slovo.as_str();
+
+    //MAKE FIRST CHAR CAPITAL IF upper
+    if upper
+    {
+        slovo = slovo[0..1].to_uppercase() + &slovo[1..];
+    }
 
     println!("{slovo}");
 }
