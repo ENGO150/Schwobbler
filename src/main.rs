@@ -17,6 +17,7 @@ fn main()
 
     let mut slovo: String = String::new();
     let mut upper: bool = false;
+    let mut contains_vowel: bool = false;
     match stdin().read_line(&mut slovo)
     {
         Ok(_) => {},
@@ -35,11 +36,24 @@ fn main()
     //CHECK IF WORD STARTS WITH UPPER CASE CHAR
     if (slovo.as_bytes()[0] as char).is_uppercase() { upper = true; }
 
-    //REMOVE ANY UNWANTED PREFIX
-    while !(slovo.as_bytes()[0] as char).is_romance_vowel()
+    //LOAD contains_vowel
+    for c in slovo.chars()
     {
-        slovo = slovo.substring(1, slovo.len()).to_string();
+        if c.is_romance_vowel()
+        {
+            contains_vowel = true;
+            break;
+        }
     }
+
+    //REMOVE ANY UNWANTED PREFIX
+    if contains_vowel
+    {
+        while !(slovo.as_bytes()[0] as char).is_romance_vowel()
+        {
+            slovo = slovo.substring(1, slovo.len()).to_string();
+        }
+    } //TODO: else
 
     slovo = slovo.to_lowercase();
 
