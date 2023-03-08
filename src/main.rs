@@ -15,6 +15,7 @@ fn main()
 {
     clear_terminal();
 
+    let mut output: String = String::new();
     let mut text: String = String::new();
     match stdin().read_line(&mut text)
     {
@@ -76,10 +77,14 @@ fn main()
             slovo = slovo[0..1].to_uppercase() + &slovo[1..];
         }
 
-        print!("{slovo} ");
+        //ADD slovo TO output TEXT
+        output = output + &slovo + " ";
     }
 
-    print!("\n");
+    //REMOVE REDUNDANT SPACE FROM output
+    output = output.substring(0, output.len() - 1).to_string();
+
+    println!("{output}");
 }
 
 fn clear_terminal()
