@@ -43,7 +43,7 @@ fn main()
         }
 
         //CHECK IF WORD STARTS WITH UPPER CASE CHAR
-        if (slovo.as_bytes()[0] as char).is_uppercase() { upper = true; }
+        if (slovo.as_bytes()[0] as char).is_uppercase() && text.starts_with(slovo_item) { upper = true; }
 
         //LOAD contains_vowel
         for c in slovo.chars()
