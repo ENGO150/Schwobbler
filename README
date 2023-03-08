@@ -1,0 +1,8 @@
+Schwobbler
+==========
+
+Some random stupid program that 'schwobbles' any text.
+
+'Schwobbling example text.' => 'Schwobbling schwexample schwext.'
+
+*this project is made only from Czech; otherwise won't work perfectly (probably)*
