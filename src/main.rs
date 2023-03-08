@@ -69,7 +69,7 @@ fn main()
 
         slovo = slovo.to_lowercase();
 
-        slovo = "schw".to_owned() + slovo.as_str();
+        if slovo.len() > 1 { slovo = "schw".to_owned() + slovo.as_str(); }
 
         //MAKE FIRST CHAR CAPITAL IF upper
         if upper
