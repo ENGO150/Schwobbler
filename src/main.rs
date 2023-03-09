@@ -36,12 +36,6 @@ fn main()
         let mut upper: bool = false;
         let mut contains_vowel: bool = false;
 
-        //CUT NEW-LINE CHAR
-        if text.ends_with(slovo_item)
-        {
-            slovo = slovo.substring(0, slovo.len() - 1).to_string();
-        }
-
         //CHECK IF WORD STARTS WITH UPPER CASE CHAR
         if (slovo.as_bytes()[0] as char).is_uppercase() && text.starts_with(slovo_item) { upper = true; }
 
@@ -81,8 +75,8 @@ fn main()
         output = output + &slovo + " ";
     }
 
-    //REMOVE REDUNDANT SPACE FROM output
-    output = output.substring(0, output.len() - 1).to_string();
+    //REMOVE REDUNDANT SUFFIX FROM output
+    output = output.substring(0, output.len() - 2).to_string();
 
     println!("{output}");
 }
