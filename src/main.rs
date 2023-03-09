@@ -50,20 +50,20 @@ fn main()
         }
 
         //REMOVE ANY UNWANTED PREFIX
-        if contains_vowel
+        if contains_vowel || slovo.len() > 1
         {
-            while !(slovo.as_bytes()[0] as char).is_romance_vowel()
+            if contains_vowel
             {
-                slovo = slovo.substring(1, slovo.len()).to_string();
-            }
-        } else if slovo.len() > 1
-        {
-            slovo = slovo.substring(1, slovo.len()).to_string();
+                while !(slovo.as_bytes()[0] as char).is_romance_vowel()
+                {
+                    slovo = slovo.substring(1, slovo.len()).to_string();
+                }
+            } else { slovo = slovo.substring(1, slovo.len()).to_string(); } //TODO: Do something with the repetitive code
+
+            slovo = "schw".to_owned() + slovo.as_str();
         }
 
         slovo = slovo.to_lowercase();
-
-        if slovo.len() > 1 { slovo = "schw".to_owned() + slovo.as_str(); }
 
         //MAKE FIRST CHAR CAPITAL IF upper
         if upper
