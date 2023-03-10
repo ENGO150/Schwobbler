@@ -5,6 +5,8 @@ use std::io::
     Write,
 };
 
+use std::env::args;
+
 use substring::Substring;
 
 trait Vowel
@@ -24,19 +26,33 @@ fn main()
 {
     clear_terminal();
 
+    let mut args: Vec<String> = args().collect();
     let mut output: String = String::new();
-    let mut text: String = String::new();
-    match stdin().read_line(&mut text)
-    {
-        Ok(_) => {},
-        Err(_) =>
-        {
-            clear_terminal();
-            panic!("poruha");
-        }
-    };
+    let mut text: String;
 
-    clear_terminal();
+    //REMOVE PATH FROM args
+    args.remove(0);
+
+    if args.is_empty()
+    {
+        text = String::new();
+
+        //GET INPUT
+        match stdin().read_line(&mut text)
+        {
+            Ok(_) => {},
+            Err(_) =>
+            {
+                clear_terminal();
+                panic!("poruha");
+            }
+        };
+
+        clear_terminal();
+    } else //INPUT FROM CONSOLE
+    {
+        text = args.join(" ") + "\n";
+    }
 
     for slovo_item in text.split(' ')
     {
