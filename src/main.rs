@@ -100,7 +100,7 @@ fn main()
         output = output + &slovo + " ";
     }
 
-    //REMOVE REDUNDANT SUFFIX FROM output
+    //REMOVE REDUNDANT SUFFIX FROM output //TODO: Sometimes there is additional new-line char at the end
     output = output.substring(0, output.len() - 2).to_string();
 
     println!("{output}");
