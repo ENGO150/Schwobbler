@@ -1,15 +1,24 @@
-use std::
+use std::io::
 {
-    io::
-    {
-        stdin,
-        stdout,
-        Write,
-    },
+    stdin,
+    stdout,
+    Write,
 };
 
 use substring::Substring;
-use is_vowel::IsRomanceVowel;
+
+trait Vowel
+{
+    fn is_vowel(&self) -> bool;
+}
+
+impl Vowel for char
+{
+    fn is_vowel(&self) -> bool
+    {
+        "aeiouáéěíóůú".to_string().contains(self.to_owned().to_ascii_lowercase())
+    }
+}
 
 fn main()
 {
@@ -42,7 +51,7 @@ fn main()
         //LOAD contains_vowel
         for c in slovo.chars()
         {
-            if c.is_romance_vowel()
+            if c.is_vowel()
             {
                 contains_vowel = true;
                 break;
@@ -54,7 +63,7 @@ fn main()
         {
             if contains_vowel
             {
-                while !(slovo.as_bytes()[0] as char).is_romance_vowel()
+                while !(slovo.as_bytes()[0] as char).is_vowel()
                 {
                     slovo = slovo.substring(1, slovo.len()).to_string();
                 }
