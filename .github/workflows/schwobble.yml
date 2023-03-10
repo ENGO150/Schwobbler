@@ -1,0 +1,21 @@
+name: Schwobble test
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: cargo build --verbose
+
+    - name: Run tests
+      run: cargo test --verbose
+
+    - name: Schwobble something
+      run: cargo run --verbose "Kdo mi řekne, jak se od sebe liší distribuce Linuxu?"
